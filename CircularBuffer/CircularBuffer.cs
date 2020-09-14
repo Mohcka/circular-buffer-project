@@ -19,6 +19,8 @@ namespace CircularBuffer
     public CircularBuffer(int size)
     {
       _size = size;
+
+      buffer = new T[size];
     }
 
     public void Add(T val)
@@ -70,7 +72,6 @@ namespace CircularBuffer
 
     public bool isAtEnd(int index)
     {
-
       return index == buffer.Length - 1;
     }
   }
