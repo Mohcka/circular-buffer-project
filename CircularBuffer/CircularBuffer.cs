@@ -2,7 +2,7 @@
 
 namespace CircularBuffer
 {
-  class CircularBuffer<T>
+  public class CircularBuffer<T>
   {
     private readonly T[] buffer;
     public int _size;
@@ -73,6 +73,11 @@ namespace CircularBuffer
     public bool isAtEnd(int index)
     {
       return index == buffer.Length - 1;
+    }
+
+    public bool doesSomething() 
+    {
+      return true;
     }
   }
 }
