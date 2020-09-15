@@ -85,7 +85,7 @@ namespace CircularBuffer
 
     public bool isCaughtUp()
     {
-      return readInd == writeInd;
+      throw new InvalidOperationException();
     }
 
     public bool isAtEnd(int index)
