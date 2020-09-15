@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace CircularBuffer
 {
@@ -11,7 +11,7 @@ namespace CircularBuffer
         get { return size; }
         set { size = value; }
     }
-
+    
 
     /// <summary>
     /// Read pointer
@@ -32,7 +32,7 @@ namespace CircularBuffer
         get { return writeInd; }
         set { writeInd = value; }
     }
-
+    
 
     public CircularBuffer(int size)
     {
@@ -41,8 +41,17 @@ namespace CircularBuffer
       buffer = new T[size];
     }
 
-    public void Add(T val)
+    public void Insert(T val)
     {
+      if (writeInd + 1 == readInd)
+      {
+        // TODO: throw err
+        System.Console.WriteLine("Can't pass readInd.");
+        return;
+      }
+
+      buffer[writeInd] = val;
+
       // inside case
       if (isAtEnd(writeInd))
       {
@@ -50,20 +59,11 @@ namespace CircularBuffer
       }
       else
       {
-        if (writeInd + 1 == readInd)
-        {
-          // throw err
-        }
-        else
-        {
           writeInd++;
-        }
       }
-
-      buffer[writeInd] = val;
     }
 
-    public T Decrease()
+    public T Remove()
     {
       // can we close the gap any further
       // if not just return current val
