@@ -90,7 +90,6 @@ namespace CircularBuffer
     /// <returns></returns>
     public T Pop()
     {
-
       if(isCaughtUp()){
         throw new InvalidOperationException("Cannot pass writeInd");
       }
@@ -110,11 +109,6 @@ namespace CircularBuffer
     public bool isAtEnd(int index)
     {
       return index == buffer.Length - 1;
-    }
-
-    public bool doesSomething() 
-    {
-      return true;
     }
   }
 }
