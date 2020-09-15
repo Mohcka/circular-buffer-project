@@ -25,15 +25,15 @@ namespace CircularBuffer.Tests
         }
 
         [Fact]
-        public void isAtEnd()
+        public void ShouldBeAbleToComeToEnd()
         {
             CircularBuffer<int> cb = new CircularBuffer<int>(5);
 
             // Act
-            cb.Insert(23);
-            cb.Insert(23);
-            cb.Insert(23);
-            cb.Insert(23);
+            cb.Push(23);
+            cb.Push(23);
+            cb.Push(23);
+            cb.Push(23);
             // WriteInd now points to the end of
             // the buffer.
 
@@ -49,8 +49,8 @@ namespace CircularBuffer.Tests
 
             // Act
 
-            // 
-            cb.Insert(42);
+            // Add 
+            cb.Push(42);
 
 
             // Assert
@@ -77,12 +77,10 @@ namespace CircularBuffer.Tests
             CircularBuffer<int> cb = new CircularBuffer<int>(5);
 
             // Act
-            cb.Insert(76);
+            cb.Push(76);
 
             // Assert
-
-            Assert.Equal(0, 76);
-
+            Assert.Equal(cb.Pop(), 76);
         }
 
     }

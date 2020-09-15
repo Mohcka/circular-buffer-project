@@ -41,7 +41,7 @@ namespace CircularBuffer
       buffer = new T[size];
     }
 
-    public void Insert(T val)
+    public void Push(T val)
     {
       if (writeInd + 1 == readInd)
       {
@@ -83,9 +83,28 @@ namespace CircularBuffer
       return buffer[readInd];
     }
 
+    /// <summary>
+    /// Reads the value at the current readInd moves the pointer
+    /// foward by one
+    /// </summary>
+    /// <returns></returns>
+    public T Pop()
+    {
+
+      if(isCaughtUp()){
+        throw new InvalidOperationException("Cannot pass writeInd");
+      }
+      T temp = buffer[readInd];
+      buffer[readInd++] = default(T);
+
+      return temp;
+    }
+
+    
+
     public bool isCaughtUp()
     {
-      throw new InvalidOperationException();
+      return readInd == writeInd;
     }
 
     public bool isAtEnd(int index)
