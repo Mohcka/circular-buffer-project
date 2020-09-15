@@ -1,24 +1,42 @@
-﻿using System;
+using System;
 
 namespace CircularBuffer
 {
   public class CircularBuffer<T>
   {
     private readonly T[] buffer;
-    public int _size;
+    private int size;
+    public int Size
+    {
+        get { return size; }
+        set { size = value; }
+    }
+
 
     /// <summary>
     /// Read pointer
     /// </summary>
     private int readInd;
+    public int ReadInd
+    {
+        get { return readInd; }
+        set { readInd = value; }
+    }
+    
     /// <summary>
     /// Write pointer
     /// </summary>
     private int writeInd;
+    public int WriteInd
+    {
+        get { return writeInd; }
+        set { writeInd = value; }
+    }
+
 
     public CircularBuffer(int size)
     {
-      _size = size;
+      this.size = size;
 
       buffer = new T[size];
     }
